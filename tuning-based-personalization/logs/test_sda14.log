@@ -1,0 +1,154 @@
+2024-06-07 23:04:28.962597: I tensorflow/core/util/port.cc:113] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2024-06-07 23:04:29.010737: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F AVX512_VNNI AVX512_BF16 AVX512_FP16 AVX_VNNI AMX_TILE AMX_INT8 AMX_BF16 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2024-06-07 23:04:29.856081: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+I0607 23:04:30.746213 140383391749952 logging.py:60] 
+db_info:
+  class_data_dir: ./image/class_people_sd_new
+  class_prompt: photo of a person
+  initializer_token: ktn+pll+ucd
+  instance_data_dir: /root/autodl-tmp/Exp/attack/eps8-255-anti/33
+  instance_prompt: photo of a <new1> person
+  mixed_precision: fp16
+  modifier_token: <new1>
+  num_class_images: 100
+  num_validation_images: 1
+  prior_loss_weight: 1.0
+  use_xformers: false
+  validation_epochs: 10
+  validation_prompt: photo of a <new1> person in a car
+  with_prior_preservation: true
+img_output_dir: /root/autodl-tmp/train_cache/exp/anti-sd1_4-8_255-33
+logdir: /root/autodl-tmp/train_cache/image/sd1_4-33-anti-8_255
+output_dir: /root/autodl-tmp/train_cache/image/sd1_4-33-anti-8_255
+pretrained:
+  model: /root/autodl-tmp/model/models--CompVis--stable-diffusion-v1-4/snapshots/133a221b8aa7292a167afc5127cb63fb5005638b
+revision: null
+run_name: sd_lora_2024.06.07_23.04.30
+sample:
+  algorithm: dpm_solver
+  cfg: true
+  num_steps: 50
+  scale: 5
+seed: 4033223
+train:
+  adam_beta1: 0.9
+  adam_beta2: 0.999
+  adam_epsilon: 1.0e-08
+  adam_weight_decay: 0.01
+  center_crop: true
+  crops_coords_top_left_h: 0
+  crops_coords_top_left_w: 0
+  dataloader_num_workers: 4
+  gradient_accumulation_steps: 1
+  gradient_checkpointing: false
+  learning_rate: 0.0003
+  lora_rank: 32
+  lr_scheduler: constant
+  lr_warmup_steps: 0
+  max_grad_norm: 1
+  max_train_steps: 500
+  num_checkpoint_limit: 300
+  num_train_epochs: null
+  num_train_timesteps: 1000
+  resolution: 512
+  sample_batch_size: 1
+  save_steps: 10
+  scale_lr: false
+  train_batch_size: 1
+  train_text_encoder: false
+use_lora: true
+
+I0607 23:04:30.748075 140383391749952 logging.py:60] Start loading the diffuser models and schedule
+You are using a model of type clip_text_model to instantiate a model of type . This is not supported for all configurations of models and can yield errors.
+the token ids for the initializer token is [42170]
+x and y is 49408 and 42170
+Loading pipeline components...:   0%|          | 0/7 [00:00<?, ?it/s]Loading pipeline components...:  14%|█▍        | 1/7 [00:00<00:01,  3.53it/s]Loading pipeline components...:  57%|█████▋    | 4/7 [00:00<00:00,  8.87it/s]Loading pipeline components...:  71%|███████▏  | 5/7 [00:00<00:00,  7.48it/s]Loading pipeline components...: 100%|██████████| 7/7 [00:00<00:00, 10.15it/s]Loading pipeline components...: 100%|██████████| 7/7 [00:00<00:00,  8.76it/s]
+I0607 23:04:37.514930 140383391749952 logging.py:60] Sucessfully loading the diffuser models and schedule
+/root/GA/tuning-based-personalization/diffusers/configuration_utils.py:239: FutureWarning: It is deprecated to pass a pretrained model name or path to `from_config`.If you were trying to load a scheduler, please use <class 'diffusers.schedulers.scheduling_ddpm.DDPMScheduler'>.from_pretrained(...) instead. Otherwise, please make sure to pass a configuration dictionary instead. This functionality will be removed in v1.0.0.
+  deprecate("config-passed-as-path", "1.0.0", deprecation_message, standard_warn=False)
+the training learning rate is 0.0003
+/root/autodl-tmp/Exp/attack/eps8-255-anti/33
+the instance file is /root/autodl-tmp/Exp/attack/eps8-255-anti/33
+***** Running training *****
+  total batch size: 1
+  Finetune the text encoder: False
+  Num examples = 100
+  Num batches each epoch = 100
+  Num Epochs = 5
+  Instantaneous batch size per device = 1
+  Total train batch size (w. parallel, distributed & accumulation) = 1
+  Gradient Accumulation steps = 1
+  Total optimization steps = 500
+ The Instance Prompt = photo of a <new1> person
+ The Modifier Token = <new1>
+  0%|          | 0/500 [00:00<?, ?it/s]Steps:   0%|          | 0/500 [00:00<?, ?it/s]/root/GA/tuning-based-personalization/diffusers/models/attention_processor.py:1566: FutureWarning: `LoRAAttnProcessor2_0` is deprecated and will be removed in version 0.26.0. Make sure use AttnProcessor2_0 instead by settingLoRA layers to `self.{to_q,to_k,to_v,to_out[0]}.lora_layer` respectively. This will be done automatically when using `LoraLoaderMixin.load_lora_weights`
+  deprecate(
+Steps:   0%|          | 1/500 [00:10<1:24:32, 10.17s/it]Steps:   0%|          | 1/500 [00:10<1:24:32, 10.17s/it, lr=0.0003, step_loss=0.56]Steps:   0%|          | 2/500 [00:11<38:51,  4.68s/it, lr=0.0003, step_loss=0.56]  Steps:   0%|          | 2/500 [00:11<38:51,  4.68s/it, lr=0.0003, step_loss=0.504]Steps:   1%|          | 3/500 [00:11<24:19,  2.94s/it, lr=0.0003, step_loss=0.504]Steps:   1%|          | 3/500 [00:11<24:19,  2.94s/it, lr=0.0003, step_loss=0.354]Steps:   1%|          | 4/500 [00:12<17:22,  2.10s/it, lr=0.0003, step_loss=0.354]Steps:   1%|          | 4/500 [00:12<17:22,  2.10s/it, lr=0.0003, step_loss=0.653]Steps:   1%|          | 5/500 [00:13<13:49,  1.68s/it, lr=0.0003, step_loss=0.653]Steps:   1%|          | 5/500 [00:13<13:49,  1.68s/it, lr=0.0003, step_loss=0.229]Steps:   1%|          | 6/500 [00:14<11:33,  1.40s/it, lr=0.0003, step_loss=0.229]Steps:   1%|          | 6/500 [00:14<11:33,  1.40s/it, lr=0.0003, step_loss=0.0195]Steps:   1%|▏         | 7/500 [00:15<10:12,  1.24s/it, lr=0.0003, step_loss=0.0195]Steps:   1%|▏         | 7/500 [00:15<10:12,  1.24s/it, lr=0.0003, step_loss=0.34]  Steps:   2%|▏         | 8/500 [00:16<09:54,  1.21s/it, lr=0.0003, step_loss=0.34]Steps:   2%|▏         | 8/500 [00:16<09:54,  1.21s/it, lr=0.0003, step_loss=0.129]Steps:   2%|▏         | 9/500 [00:17<09:34,  1.17s/it, lr=0.0003, step_loss=0.129]Steps:   2%|▏         | 9/500 [00:17<09:34,  1.17s/it, lr=0.0003, step_loss=0.42] Steps:   2%|▏         | 10/500 [00:18<09:03,  1.11s/it, lr=0.0003, step_loss=0.42]I0607 23:04:56.223531 140383391749952 logging.py:60] Saving embeddings
+[2024-06-07 23:04:56,349] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[93m [WARNING] [0m async_io requires the dev libaio .so object and headers but these were not found.
+[93m [WARNING] [0m async_io: please install the libaio-dev package with apt
+[93m [WARNING] [0m If libaio is already installed (perhaps from source), try setting the CFLAGS and LDFLAGS environment variables to where it can be found.
+[93m [WARNING] [0m Please specify the CUTLASS repo directory as environment variable $CUTLASS_PATH
+[93m [WARNING] [0m sparse_attn requires a torch version >= 1.5 and < 2.0 but detected 2.0
+[93m [WARNING] [0m using untested triton version (3.0.0), only 1.0.0 is known to be compatible
+
+Loading pipeline components...:   0%|          | 0/7 [00:00<?, ?it/s][A
+Loading pipeline components...:  14%|█▍        | 1/7 [00:00<00:03,  1.84it/s][ALoading pipeline components...: 100%|██████████| 7/7 [00:00<00:00, 11.57it/s]
+I0607 23:05:13.250655 140383391749952 logging.py:60] image saved in /root/autodl-tmp/train_cache/exp/anti-sd1_4-8_255-33/10.PNG
+I0607 23:05:22.329450 140383391749952 logging.py:60] image saved in /root/autodl-tmp/train_cache/exp/anti-sd1_4-8_255-33/10_test.PNG
+Steps:   2%|▏         | 10/500 [00:44<09:03,  1.11s/it, lr=0.0003, step_loss=0.428]Steps:   2%|▏         | 11/500 [00:45<1:14:01,  9.08s/it, lr=0.0003, step_loss=0.428]Steps:   2%|▏         | 11/500 [00:45<1:14:01,  9.08s/it, lr=0.0003, step_loss=0.311]Steps:   2%|▏         | 12/500 [00:46<53:43,  6.61s/it, lr=0.0003, step_loss=0.311]  Steps:   2%|▏         | 12/500 [00:46<53:43,  6.61s/it, lr=0.0003, step_loss=0.176]Steps:   3%|▎         | 13/500 [00:47<39:40,  4.89s/it, lr=0.0003, step_loss=0.176]Steps:   3%|▎         | 13/500 [00:47<39:40,  4.89s/it, lr=0.0003, step_loss=0.499]Steps:   3%|▎         | 14/500 [00:48<30:04,  3.71s/it, lr=0.0003, step_loss=0.499]Steps:   3%|▎         | 14/500 [00:48<30:04,  3.71s/it, lr=0.0003, step_loss=0.857]Steps:   3%|▎         | 15/500 [00:49<23:55,  2.96s/it, lr=0.0003, step_loss=0.857]Steps:   3%|▎         | 15/500 [00:49<23:55,  2.96s/it, lr=0.0003, step_loss=0.503]Steps:   3%|▎         | 16/500 [00:51<19:39,  2.44s/it, lr=0.0003, step_loss=0.503]Steps:   3%|▎         | 16/500 [00:51<19:39,  2.44s/it, lr=0.0003, step_loss=0.211]Steps:   3%|▎         | 17/500 [00:52<17:16,  2.15s/it, lr=0.0003, step_loss=0.211]Steps:   3%|▎         | 17/500 [00:52<17:16,  2.15s/it, lr=0.0003, step_loss=0.043]Steps:   4%|▎         | 18/500 [00:54<15:36,  1.94s/it, lr=0.0003, step_loss=0.043]Steps:   4%|▎         | 18/500 [00:54<15:36,  1.94s/it, lr=0.0003, step_loss=0.291]Steps:   4%|▍         | 19/500 [00:55<14:26,  1.80s/it, lr=0.0003, step_loss=0.291]Steps:   4%|▍         | 19/500 [00:55<14:26,  1.80s/it, lr=0.0003, step_loss=0.283]Steps:   4%|▍         | 20/500 [00:56<13:35,  1.70s/it, lr=0.0003, step_loss=0.283]I0607 23:05:34.572544 140383391749952 logging.py:60] Saving embeddings
+/root/autodl-tmp/train_cache/image/sd1_4-33-anti-8_255/checkpoint-10/<new1>.bin
+
+Loading pipeline components...:   0%|          | 0/7 [00:00<?, ?it/s][A
+Loading pipeline components...:  14%|█▍        | 1/7 [00:00<00:02,  2.06it/s][ALoading pipeline components...: 100%|██████████| 7/7 [00:00<00:00, 12.84it/s]
+I0607 23:05:46.906465 140383391749952 logging.py:60] image saved in /root/autodl-tmp/train_cache/exp/anti-sd1_4-8_255-33/20.PNG
+I0607 23:05:59.068632 140383391749952 logging.py:60] image saved in /root/autodl-tmp/train_cache/exp/anti-sd1_4-8_255-33/20_test.PNG
+Steps:   4%|▍         | 20/500 [01:21<13:35,  1.70s/it, lr=0.0003, step_loss=0.303]Steps:   4%|▍         | 21/500 [01:22<1:11:38,  8.97s/it, lr=0.0003, step_loss=0.303]Steps:   4%|▍         | 21/500 [01:22<1:11:38,  8.97s/it, lr=0.0003, step_loss=0.0577]Steps:   4%|▍         | 22/500 [01:24<53:25,  6.71s/it, lr=0.0003, step_loss=0.0577]  Steps:   4%|▍         | 22/500 [01:24<53:25,  6.71s/it, lr=0.0003, step_loss=0.365] Steps:   5%|▍         | 23/500 [01:25<40:40,  5.12s/it, lr=0.0003, step_loss=0.365]Steps:   5%|▍         | 23/500 [01:25<40:40,  5.12s/it, lr=0.0003, step_loss=0.105]Steps:   5%|▍         | 24/500 [01:27<31:40,  3.99s/it, lr=0.0003, step_loss=0.105]Steps:   5%|▍         | 24/500 [01:27<31:40,  3.99s/it, lr=0.0003, step_loss=0.174]Steps:   5%|▌         | 25/500 [01:28<25:00,  3.16s/it, lr=0.0003, step_loss=0.174]Steps:   5%|▌         | 25/500 [01:28<25:00,  3.16s/it, lr=0.0003, step_loss=0.592]Steps:   5%|▌         | 26/500 [01:29<20:17,  2.57s/it, lr=0.0003, step_loss=0.592]Steps:   5%|▌         | 26/500 [01:29<20:17,  2.57s/it, lr=0.0003, step_loss=0.205]Steps:   5%|▌         | 27/500 [01:30<17:07,  2.17s/it, lr=0.0003, step_loss=0.205]Steps:   5%|▌         | 27/500 [01:30<17:07,  2.17s/it, lr=0.0003, step_loss=0.238]Steps:   6%|▌         | 28/500 [01:32<15:28,  1.97s/it, lr=0.0003, step_loss=0.238]Steps:   6%|▌         | 28/500 [01:32<15:28,  1.97s/it, lr=0.0003, step_loss=0.978]Steps:   6%|▌         | 29/500 [01:33<13:58,  1.78s/it, lr=0.0003, step_loss=0.978]Steps:   6%|▌         | 29/500 [01:33<13:58,  1.78s/it, lr=0.0003, step_loss=0.208]Steps:   6%|▌         | 30/500 [01:35<13:16,  1.70s/it, lr=0.0003, step_loss=0.208]I0607 23:06:12.686563 140383391749952 logging.py:60] Saving embeddings
+/root/autodl-tmp/train_cache/image/sd1_4-33-anti-8_255/checkpoint-20/<new1>.bin
+
+Loading pipeline components...:   0%|          | 0/7 [00:00<?, ?it/s][A
+Loading pipeline components...:  14%|█▍        | 1/7 [00:00<00:02,  2.15it/s][ALoading pipeline components...: 100%|██████████| 7/7 [00:00<00:00, 13.43it/s]
+I0607 23:06:27.141870 140383391749952 logging.py:60] image saved in /root/autodl-tmp/train_cache/exp/anti-sd1_4-8_255-33/30.PNG
+I0607 23:06:38.687962 140383391749952 logging.py:60] image saved in /root/autodl-tmp/train_cache/exp/anti-sd1_4-8_255-33/30_test.PNG
+Steps:   6%|▌         | 30/500 [02:01<13:16,  1.70s/it, lr=0.0003, step_loss=0.703]Steps:   6%|▌         | 31/500 [02:02<1:14:00,  9.47s/it, lr=0.0003, step_loss=0.703]Steps:   6%|▌         | 31/500 [02:02<1:14:00,  9.47s/it, lr=0.0003, step_loss=0.58] Steps:   6%|▋         | 32/500 [02:04<55:10,  7.07s/it, lr=0.0003, step_loss=0.58]  Steps:   6%|▋         | 32/500 [02:04<55:10,  7.07s/it, lr=0.0003, step_loss=0.0126]Steps:   7%|▋         | 33/500 [02:05<41:56,  5.39s/it, lr=0.0003, step_loss=0.0126]Steps:   7%|▋         | 33/500 [02:05<41:56,  5.39s/it, lr=0.0003, step_loss=0.189] Steps:   7%|▋         | 34/500 [02:07<32:38,  4.20s/it, lr=0.0003, step_loss=0.189]Steps:   7%|▋         | 34/500 [02:07<32:38,  4.20s/it, lr=0.0003, step_loss=0.0574]Steps:   7%|▋         | 35/500 [02:08<25:45,  3.32s/it, lr=0.0003, step_loss=0.0574]Steps:   7%|▋         | 35/500 [02:08<25:45,  3.32s/it, lr=0.0003, step_loss=0.0509]Steps:   7%|▋         | 36/500 [02:09<20:25,  2.64s/it, lr=0.0003, step_loss=0.0509]Steps:   7%|▋         | 36/500 [02:09<20:25,  2.64s/it, lr=0.0003, step_loss=0.221] Steps:   7%|▋         | 37/500 [02:10<17:02,  2.21s/it, lr=0.0003, step_loss=0.221]Steps:   7%|▋         | 37/500 [02:10<17:02,  2.21s/it, lr=0.0003, step_loss=0.462]Steps:   8%|▊         | 38/500 [02:12<15:21,  1.99s/it, lr=0.0003, step_loss=0.462]Steps:   8%|▊         | 38/500 [02:12<15:21,  1.99s/it, lr=0.0003, step_loss=0.106]Steps:   8%|▊         | 39/500 [02:13<14:10,  1.84s/it, lr=0.0003, step_loss=0.106]Steps:   8%|▊         | 39/500 [02:13<14:10,  1.84s/it, lr=0.0003, step_loss=0.0765]Steps:   8%|▊         | 40/500 [02:15<13:20,  1.74s/it, lr=0.0003, step_loss=0.0765]I0607 23:06:52.678841 140383391749952 logging.py:60] Saving embeddings
+/root/autodl-tmp/train_cache/image/sd1_4-33-anti-8_255/checkpoint-30/<new1>.bin
+
+Loading pipeline components...:   0%|          | 0/7 [00:00<?, ?it/s][A
+Loading pipeline components...:  14%|█▍        | 1/7 [00:00<00:02,  2.09it/s][ALoading pipeline components...: 100%|██████████| 7/7 [00:00<00:00, 13.12it/s]
+I0607 23:07:07.130020 140383391749952 logging.py:60] image saved in /root/autodl-tmp/train_cache/exp/anti-sd1_4-8_255-33/40.PNG
+I0607 23:07:18.637025 140383391749952 logging.py:60] image saved in /root/autodl-tmp/train_cache/exp/anti-sd1_4-8_255-33/40_test.PNG
+Steps:   8%|▊         | 40/500 [02:41<13:20,  1.74s/it, lr=0.0003, step_loss=0.163] Steps:   8%|▊         | 41/500 [02:42<1:12:31,  9.48s/it, lr=0.0003, step_loss=0.163]Steps:   8%|▊         | 41/500 [02:42<1:12:31,  9.48s/it, lr=0.0003, step_loss=0.528]Steps:   8%|▊         | 42/500 [02:44<54:02,  7.08s/it, lr=0.0003, step_loss=0.528]  Steps:   8%|▊         | 42/500 [02:44<54:02,  7.08s/it, lr=0.0003, step_loss=0.373]Steps:   9%|▊         | 43/500 [02:45<41:01,  5.39s/it, lr=0.0003, step_loss=0.373]Steps:   9%|▊         | 43/500 [02:45<41:01,  5.39s/it, lr=0.0003, step_loss=0.434]Steps:   9%|▉         | 44/500 [02:46<31:38,  4.16s/it, lr=0.0003, step_loss=0.434]Steps:   9%|▉         | 44/500 [02:46<31:38,  4.16s/it, lr=0.0003, step_loss=0.504]Steps:   9%|▉         | 45/500 [02:48<25:05,  3.31s/it, lr=0.0003, step_loss=0.504]Steps:   9%|▉         | 45/500 [02:48<25:05,  3.31s/it, lr=0.0003, step_loss=0.366]Steps:   9%|▉         | 46/500 [02:49<20:15,  2.68s/it, lr=0.0003, step_loss=0.366]Steps:   9%|▉         | 46/500 [02:49<20:15,  2.68s/it, lr=0.0003, step_loss=1.25] Steps:   9%|▉         | 47/500 [02:50<16:53,  2.24s/it, lr=0.0003, step_loss=1.25]Steps:   9%|▉         | 47/500 [02:50<16:53,  2.24s/it, lr=0.0003, step_loss=0.221]Steps:  10%|▉         | 48/500 [02:52<15:09,  2.01s/it, lr=0.0003, step_loss=0.221]Steps:  10%|▉         | 48/500 [02:52<15:09,  2.01s/it, lr=0.0003, step_loss=0.314]Steps:  10%|▉         | 49/500 [02:53<13:58,  1.86s/it, lr=0.0003, step_loss=0.314]Steps:  10%|▉         | 49/500 [02:53<13:58,  1.86s/it, lr=0.0003, step_loss=0.012]Steps:  10%|█         | 50/500 [02:55<13:07,  1.75s/it, lr=0.0003, step_loss=0.012]I0607 23:07:32.656027 140383391749952 logging.py:60] Saving embeddings
+/root/autodl-tmp/train_cache/image/sd1_4-33-anti-8_255/checkpoint-40/<new1>.bin
+
+Loading pipeline components...:   0%|          | 0/7 [00:00<?, ?it/s][A
+Loading pipeline components...:  14%|█▍        | 1/7 [00:00<00:02,  2.13it/s][ALoading pipeline components...: 100%|██████████| 7/7 [00:00<00:00, 13.28it/s]
+I0607 23:07:47.124108 140383391749952 logging.py:60] image saved in /root/autodl-tmp/train_cache/exp/anti-sd1_4-8_255-33/50.PNG
+I0607 23:07:58.603006 140383391749952 logging.py:60] image saved in /root/autodl-tmp/train_cache/exp/anti-sd1_4-8_255-33/50_test.PNG
+Steps:  10%|█         | 50/500 [03:21<13:07,  1.75s/it, lr=0.0003, step_loss=0.265]Steps:  10%|█         | 51/500 [03:22<1:10:37,  9.44s/it, lr=0.0003, step_loss=0.265]Steps:  10%|█         | 51/500 [03:22<1:10:37,  9.44s/it, lr=0.0003, step_loss=0.148]Steps:  10%|█         | 52/500 [03:23<52:40,  7.06s/it, lr=0.0003, step_loss=0.148]  Steps:  10%|█         | 52/500 [03:23<52:40,  7.06s/it, lr=0.0003, step_loss=0.399]Steps:  11%|█         | 53/500 [03:25<40:03,  5.38s/it, lr=0.0003, step_loss=0.399]Steps:  11%|█         | 53/500 [03:25<40:03,  5.38s/it, lr=0.0003, step_loss=0.698]Steps:  11%|█         | 54/500 [03:26<31:13,  4.20s/it, lr=0.0003, step_loss=0.698]Steps:  11%|█         | 54/500 [03:26<31:13,  4.20s/it, lr=0.0003, step_loss=0.147]Steps:  11%|█         | 55/500 [03:28<24:48,  3.35s/it, lr=0.0003, step_loss=0.147]Steps:  11%|█         | 55/500 [03:28<24:48,  3.35s/it, lr=0.0003, step_loss=0.366]Steps:  11%|█         | 56/500 [03:29<19:59,  2.70s/it, lr=0.0003, step_loss=0.366]Steps:  11%|█         | 56/500 [03:29<19:59,  2.70s/it, lr=0.0003, step_loss=0.0344]Steps:  11%|█▏        | 57/500 [03:30<16:38,  2.25s/it, lr=0.0003, step_loss=0.0344]Steps:  11%|█▏        | 57/500 [03:30<16:38,  2.25s/it, lr=0.0003, step_loss=0.0496]Steps:  12%|█▏        | 58/500 [03:32<14:49,  2.01s/it, lr=0.0003, step_loss=0.0496]Steps:  12%|█▏        | 58/500 [03:32<14:49,  2.01s/it, lr=0.0003, step_loss=0.134] Steps:  12%|█▏        | 59/500 [03:33<13:33,  1.85s/it, lr=0.0003, step_loss=0.134]Steps:  12%|█▏        | 59/500 [03:33<13:33,  1.85s/it, lr=0.0003, step_loss=0.31] Steps:  12%|█▏        | 60/500 [03:34<12:45,  1.74s/it, lr=0.0003, step_loss=0.31]I0607 23:08:12.602607 140383391749952 logging.py:60] Saving embeddings
+/root/autodl-tmp/train_cache/image/sd1_4-33-anti-8_255/checkpoint-50/<new1>.bin
+
+Loading pipeline components...:   0%|          | 0/7 [00:00<?, ?it/s][A
+Loading pipeline components...:  14%|█▍        | 1/7 [00:00<00:02,  2.11it/s][ALoading pipeline components...: 100%|██████████| 7/7 [00:00<00:00, 13.15it/s]
+I0607 23:08:26.912429 140383391749952 logging.py:60] image saved in /root/autodl-tmp/train_cache/exp/anti-sd1_4-8_255-33/60.PNG
+I0607 23:08:38.321759 140383391749952 logging.py:60] image saved in /root/autodl-tmp/train_cache/exp/anti-sd1_4-8_255-33/60_test.PNG
+Steps:  12%|█▏        | 60/500 [04:00<12:45,  1.74s/it, lr=0.0003, step_loss=0.282]Steps:  12%|█▏        | 61/500 [04:02<1:08:56,  9.42s/it, lr=0.0003, step_loss=0.282]Steps:  12%|█▏        | 61/500 [04:02<1:08:56,  9.42s/it, lr=0.0003, step_loss=0.0181]Steps:  12%|█▏        | 62/500 [04:03<51:25,  7.04s/it, lr=0.0003, step_loss=0.0181]  Steps:  12%|█▏        | 62/500 [04:03<51:25,  7.04s/it, lr=0.0003, step_loss=0.0468]Steps:  13%|█▎        | 63/500 [04:05<39:08,  5.37s/it, lr=0.0003, step_loss=0.0468]Steps:  13%|█▎        | 63/500 [04:05<39:08,  5.37s/it, lr=0.0003, step_loss=0.267] Steps:  13%|█▎        | 64/500 [04:06<30:29,  4.20s/it, lr=0.0003, step_loss=0.267]Steps:  13%|█▎        | 64/500 [04:06<30:29,  4.20s/it, lr=0.0003, step_loss=0.39] Steps:  13%|█▎        | 65/500 [04:08<24:17,  3.35s/it, lr=0.0003, step_loss=0.39]Steps:  13%|█▎        | 65/500 [04:08<24:17,  3.35s/it, lr=0.0003, step_loss=0.0658]Steps:  13%|█▎        | 66/500 [04:09<19:34,  2.71s/it, lr=0.0003, step_loss=0.0658]Steps:  13%|█▎        | 66/500 [04:09<19:34,  2.71s/it, lr=0.0003, step_loss=0.753] Steps:  13%|█▎        | 67/500 [04:10<16:11,  2.24s/it, lr=0.0003, step_loss=0.753]Steps:  13%|█▎        | 67/500 [04:10<16:11,  2.24s/it, lr=0.0003, step_loss=0.142]Steps:  14%|█▎        | 68/500 [04:11<14:25,  2.00s/it, lr=0.0003, step_loss=0.142]Steps:  14%|█▎        | 68/500 [04:11<14:25,  2.00s/it, lr=0.0003, step_loss=0.911]Steps:  14%|█▍        | 69/500 [04:13<13:17,  1.85s/it, lr=0.0003, step_loss=0.911]Steps:  14%|█▍        | 69/500 [04:13<13:17,  1.85s/it, lr=0.0003, step_loss=0.212]Steps:  14%|█▍        | 70/500 [04:14<12:30,  1.74s/it, lr=0.0003, step_loss=0.212]I0607 23:08:52.547548 140383391749952 logging.py:60] Saving embeddings
+/root/autodl-tmp/train_cache/image/sd1_4-33-anti-8_255/checkpoint-60/<new1>.bin
+
+Loading pipeline components...:   0%|          | 0/7 [00:00<?, ?it/s][A
+Loading pipeline components...:  14%|█▍        | 1/7 [00:00<00:02,  2.15it/s][ALoading pipeline components...: 100%|██████████| 7/7 [00:00<00:00, 13.45it/s]
+I0607 23:09:06.947525 140383391749952 logging.py:60] image saved in /root/autodl-tmp/train_cache/exp/anti-sd1_4-8_255-33/70.PNG
+I0607 23:09:18.375514 140383391749952 logging.py:60] image saved in /root/autodl-tmp/train_cache/exp/anti-sd1_4-8_255-33/70_test.PNG
+Steps:  14%|█▍        | 70/500 [04:40<12:30,  1.74s/it, lr=0.0003, step_loss=0.528]Steps:  14%|█▍        | 71/500 [04:42<1:07:33,  9.45s/it, lr=0.0003, step_loss=0.528]Steps:  14%|█▍        | 71/500 [04:42<1:07:33,  9.45s/it, lr=0.0003, step_loss=0.0852]Steps:  14%|█▍        | 72/500 [04:43<50:22,  7.06s/it, lr=0.0003, step_loss=0.0852]  Steps:  14%|█▍        | 72/500 [04:43<50:22,  7.06s/it, lr=0.0003, step_loss=0.29]  Steps:  15%|█▍        | 73/500 [04:45<38:18,  5.38s/it, lr=0.0003, step_loss=0.29]Steps:  15%|█▍        | 73/500 [04:45<38:18,  5.38s/it, lr=0.0003, step_loss=0.168]Steps:  15%|█▍        | 74/500 [04:46<29:46,  4.19s/it, lr=0.0003, step_loss=0.168]Steps:  15%|█▍        | 74/500 [04:46<29:46,  4.19s/it, lr=0.0003, step_loss=0.947]Steps:  15%|█▌        | 75/500 [04:48<23:47,  3.36s/it, lr=0.0003, step_loss=0.947]Steps:  15%|█▌        | 75/500 [04:48<23:47,  3.36s/it, lr=0.0003, step_loss=0.144]Steps:  15%|█▌        | 76/500 [04:49<19:09,  2.71s/it, lr=0.0003, step_loss=0.144]Steps:  15%|█▌        | 76/500 [04:49<19:09,  2.71s/it, lr=0.0003, step_loss=0.856]Steps:  15%|█▌        | 77/500 [04:50<15:55,  2.26s/it, lr=0.0003, step_loss=0.856]Steps:  15%|█▌        | 77/500 [04:50<15:55,  2.26s/it, lr=0.0003, step_loss=0.213]Steps:  16%|█▌        | 78/500 [04:51<14:05,  2.00s/it, lr=0.0003, step_loss=0.213]Steps:  16%|█▌        | 78/500 [04:51<14:05,  2.00s/it, lr=0.0003, step_loss=1.18] Steps:  16%|█▌        | 79/500 [04:53<12:59,  1.85s/it, lr=0.0003, step_loss=1.18]Steps:  16%|█▌        | 79/500 [04:53<12:59,  1.85s/it, lr=0.0003, step_loss=0.723]Steps:  16%|█▌        | 80/500 [04:54<12:12,  1.74s/it, lr=0.0003, step_loss=0.723]I0607 23:09:32.557128 140383391749952 logging.py:60] Saving embeddings
+/root/autodl-tmp/train_cache/image/sd1_4-33-anti-8_255/checkpoint-70/<new1>.bin
+
+Loading pipeline components...:   0%|          | 0/7 [00:00<?, ?it/s][A
+Loading pipeline components...:  14%|█▍        | 1/7 [00:00<00:02,  2.28it/s][ALoading pipeline components...: 100%|██████████| 7/7 [00:00<00:00, 14.32it/s]
+I0607 23:09:46.846750 140383391749952 logging.py:60] image saved in /root/autodl-tmp/train_cache/exp/anti-sd1_4-8_255-33/80.PNG
+I0607 23:09:58.208935 140383391749952 logging.py:60] image saved in /root/autodl-tmp/train_cache/exp/anti-sd1_4-8_255-33/80_test.PNG
+Steps:  16%|█▌        | 80/500 [05:20<12:12,  1.74s/it, lr=0.0003, step_loss=0.0825]Steps:  16%|█▌        | 81/500 [05:22<1:05:37,  9.40s/it, lr=0.0003, step_loss=0.0825]Steps:  16%|█▌        | 81/500 [05:22<1:05:37,  9.40s/it, lr=0.0003, step_loss=0.137] Steps:  16%|█▋        | 82/500 [05:23<48:52,  7.02s/it, lr=0.0003, step_loss=0.137]  Steps:  16%|█▋        | 82/500 [05:23<48:52,  7.02s/it, lr=0.0003, step_loss=0.504]Steps:  17%|█▋        | 83/500 [05:25<37:10,  5.35s/it, lr=0.0003, step_loss=0.504]Steps:  17%|█▋        | 83/500 [05:25<37:10,  5.35s/it, lr=0.0003, step_loss=0.34] Steps:  17%|█▋        | 84/500 [05:26<28:59,  4.18s/it, lr=0.0003, step_loss=0.34]Steps:  17%|█▋        | 84/500 [05:26<28:59,  4.18s/it, lr=0.0003, step_loss=0.746]Steps:  17%|█▋        | 85/500 [05:27<23:14,  3.36s/it, lr=0.0003, step_loss=0.746]Steps:  17%|█▋        | 85/500 [05:28<23:14,  3.36s/it, lr=0.0003, step_loss=0.277]Steps:  17%|█▋        | 86/500 [05:29<18:43,  2.71s/it, lr=0.0003, step_loss=0.277]Steps:  17%|█▋        | 86/500 [05:29<18:43,  2.71s/it, lr=0.0003, step_loss=0.0551]Steps:  17%|█▋        | 87/500 [05:30<15:33,  2.26s/it, lr=0.0003, step_loss=0.0551]Steps:  17%|█▋        | 87/500 [05:30<15:33,  2.26s/it, lr=0.0003, step_loss=0.249] Steps:  18%|█▊        | 88/500 [05:31<13:40,  1.99s/it, lr=0.0003, step_loss=0.249]Steps:  18%|█▊        | 88/500 [05:31<13:40,  1.99s/it, lr=0.0003, step_loss=0.162]Steps:  18%|█▊        | 89/500 [05:33<12:34,  1.84s/it, lr=0.0003, step_loss=0.162]Steps:  18%|█▊        | 89/500 [05:33<12:34,  1.84s/it, lr=0.0003, step_loss=0.0864]Steps:  18%|█▊        | 90/500 [05:34<11:49,  1.73s/it, lr=0.0003, step_loss=0.0864]I0607 23:10:12.360446 140383391749952 logging.py:60] Saving embeddings
+/root/autodl-tmp/train_cache/image/sd1_4-33-anti-8_255/checkpoint-80/<new1>.bin
+
+Loading pipeline components...:   0%|          | 0/7 [00:00<?, ?it/s][A
+Loading pipeline components...:  14%|█▍        | 1/7 [00:00<00:02,  2.09it/s][ALoading pipeline components...: 100%|██████████| 7/7 [00:00<00:00, 13.18it/s]
+I0607 23:10:26.582598 140383391749952 logging.py:60] image saved in /root/autodl-tmp/train_cache/exp/anti-sd1_4-8_255-33/90.PNG

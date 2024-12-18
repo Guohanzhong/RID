@@ -1,0 +1,4 @@
+absl-py==1.4.0
+accelerate==0.20.0
+safetensors
+ml_collections

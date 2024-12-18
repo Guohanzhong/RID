@@ -1,0 +1,121 @@
+2024-06-07 11:58:39.547233: I tensorflow/core/util/port.cc:113] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2024-06-07 11:58:39.600491: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F AVX512_VNNI AVX512_BF16 AVX512_FP16 AVX_VNNI AMX_TILE AMX_INT8 AMX_BF16 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2024-06-07 11:58:40.445956: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+I0607 11:58:41.320135 140407507687232 logging.py:60] 
+db_info:
+  class_data_dir: ./image/class_people_sd_new
+  class_prompt: photo of a person
+  initializer_token: ktn+pll+ucd
+  instance_data_dir: /root/autodl-tmp/Exp/attack/eps12-255-advdm/33
+  instance_prompt: photo of a <new1> person
+  mixed_precision: fp16
+  modifier_token: <new1>
+  num_class_images: 100
+  num_validation_images: 1
+  prior_loss_weight: 1.0
+  use_xformers: false
+  validation_epochs: 10
+  validation_prompt: photo of a <new1> person in a car
+  with_prior_preservation: true
+img_output_dir: /root/autodl-tmp/train_cache/exp/advdm-sd2_1-12_255-33
+logdir: /root/autodl-tmp/train_cache/image/sd2_1-33-advdm-12_255
+output_dir: /root/autodl-tmp/train_cache/image/sd2_1-33-advdm-12_255
+pretrained:
+  model: /root/autodl-tmp/model/2/models--stabilityai--stable-diffusion-2-1-base/snapshots/5ede9e4bf3e3fd1cb0ef2f7a3fff13ee514fdf06
+revision: null
+run_name: sd_lora_2024.06.07_11.58.41
+sample:
+  algorithm: dpm_solver
+  cfg: true
+  num_steps: 50
+  scale: 5
+seed: 4033223
+train:
+  adam_beta1: 0.9
+  adam_beta2: 0.999
+  adam_epsilon: 1.0e-08
+  adam_weight_decay: 0.01
+  center_crop: true
+  crops_coords_top_left_h: 0
+  crops_coords_top_left_w: 0
+  dataloader_num_workers: 4
+  gradient_accumulation_steps: 1
+  gradient_checkpointing: false
+  learning_rate: 0.0003
+  lora_rank: 32
+  lr_scheduler: constant
+  lr_warmup_steps: 0
+  max_grad_norm: 1
+  max_train_steps: 500
+  num_checkpoint_limit: 300
+  num_train_epochs: null
+  num_train_timesteps: 1000
+  resolution: 512
+  sample_batch_size: 1
+  save_steps: 10
+  scale_lr: false
+  train_batch_size: 1
+  train_text_encoder: false
+use_lora: true
+
+I0607 11:58:41.321946 140407507687232 logging.py:60] Start loading the diffuser models and schedule
+You are using a model of type clip_text_model to instantiate a model of type . This is not supported for all configurations of models and can yield errors.
+the token ids for the initializer token is [42170]
+x and y is 49408 and 42170
+Loading pipeline components...:   0%|          | 0/6 [00:00<?, ?it/s]Loading pipeline components...:  17%|█▋        | 1/6 [00:00<00:01,  4.22it/s]Loading pipeline components...:  67%|██████▋   | 4/6 [00:00<00:00,  8.83it/s]Loading pipeline components...:  83%|████████▎ | 5/6 [00:00<00:00,  6.78it/s]Loading pipeline components...: 100%|██████████| 6/6 [00:00<00:00,  7.67it/s]
+I0607 11:58:56.508731 140407507687232 logging.py:60] Sucessfully loading the diffuser models and schedule
+/root/GA/tuning-based-personalization/diffusers/configuration_utils.py:239: FutureWarning: It is deprecated to pass a pretrained model name or path to `from_config`.If you were trying to load a scheduler, please use <class 'diffusers.schedulers.scheduling_ddpm.DDPMScheduler'>.from_pretrained(...) instead. Otherwise, please make sure to pass a configuration dictionary instead. This functionality will be removed in v1.0.0.
+  deprecate("config-passed-as-path", "1.0.0", deprecation_message, standard_warn=False)
+the training learning rate is 0.0003
+/root/autodl-tmp/Exp/attack/eps12-255-advdm/33
+the instance file is /root/autodl-tmp/Exp/attack/eps12-255-advdm/33
+***** Running training *****
+  total batch size: 1
+  Finetune the text encoder: False
+  Num examples = 100
+  Num batches each epoch = 100
+  Num Epochs = 5
+  Instantaneous batch size per device = 1
+  Total train batch size (w. parallel, distributed & accumulation) = 1
+  Gradient Accumulation steps = 1
+  Total optimization steps = 500
+ The Instance Prompt = photo of a <new1> person
+ The Modifier Token = <new1>
+  0%|          | 0/500 [00:00<?, ?it/s]Steps:   0%|          | 0/500 [00:00<?, ?it/s]/root/GA/tuning-based-personalization/diffusers/models/attention_processor.py:1566: FutureWarning: `LoRAAttnProcessor2_0` is deprecated and will be removed in version 0.26.0. Make sure use AttnProcessor2_0 instead by settingLoRA layers to `self.{to_q,to_k,to_v,to_out[0]}.lora_layer` respectively. This will be done automatically when using `LoraLoaderMixin.load_lora_weights`
+  deprecate(
+Traceback (most recent call last):
+  File "/root/GA/tuning-based-personalization/train_sd_lora_dreambooth_token.py", line 808, in <module>
+    app.run(main)
+  File "/root/miniconda3/lib/python3.10/site-packages/absl/app.py", line 308, in run
+    _run_main(main, args)
+  File "/root/miniconda3/lib/python3.10/site-packages/absl/app.py", line 254, in _run_main
+    sys.exit(main(argv))
+  File "/root/GA/tuning-based-personalization/train_sd_lora_dreambooth_token.py", line 682, in main
+    itertools.chain(unet.float().parameters(), text_encoder_one.float().parameters())
+  File "/root/miniconda3/lib/python3.10/site-packages/transformers/modeling_utils.py", line 2744, in float
+    return super().float(*args)
+  File "/root/miniconda3/lib/python3.10/site-packages/torch/nn/modules/module.py", line 979, in float
+    return self._apply(lambda t: t.float() if t.is_floating_point() else t)
+  File "/root/miniconda3/lib/python3.10/site-packages/torch/nn/modules/module.py", line 797, in _apply
+    module._apply(fn)
+  File "/root/miniconda3/lib/python3.10/site-packages/torch/nn/modules/module.py", line 797, in _apply
+    module._apply(fn)
+  File "/root/miniconda3/lib/python3.10/site-packages/torch/nn/modules/module.py", line 797, in _apply
+    module._apply(fn)
+  File "/root/miniconda3/lib/python3.10/site-packages/torch/nn/modules/module.py", line 833, in _apply
+    grad_applied = fn(param.grad)
+  File "/root/miniconda3/lib/python3.10/site-packages/torch/nn/modules/module.py", line 979, in <lambda>
+    return self._apply(lambda t: t.float() if t.is_floating_point() else t)
+torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 194.00 MiB (GPU 0; 47.50 GiB total capacity; 4.46 GiB already allocated; 37.25 MiB free; 5.13 GiB reserved in total by PyTorch) If reserved memory is >> allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF
+Steps:   0%|          | 0/500 [00:29<?, ?it/s]
+Traceback (most recent call last):
+  File "/root/miniconda3/bin/accelerate", line 8, in <module>
+    sys.exit(main())
+  File "/root/miniconda3/lib/python3.10/site-packages/accelerate/commands/accelerate_cli.py", line 47, in main
+    args.func(args)
+  File "/root/miniconda3/lib/python3.10/site-packages/accelerate/commands/launch.py", line 994, in launch_command
+    simple_launcher(args)
+  File "/root/miniconda3/lib/python3.10/site-packages/accelerate/commands/launch.py", line 636, in simple_launcher
+    raise subprocess.CalledProcessError(returncode=process.returncode, cmd=cmd)
+subprocess.CalledProcessError: Command '['/root/miniconda3/bin/python', 'train_sd_lora_dreambooth_token.py', '--config=config/sd_lora.py']' returned non-zero exit status 1.
