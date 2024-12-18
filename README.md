@@ -8,4 +8,10 @@
 
 ## :label: News!
 
-* Models and FID statistics are available ([https://drive.google.com/file/d/1qP1kcjz6fSzevWSEWFucJS7gDWk88-35/view?usp=sharing](https://drive.google.com/drive/folders/1EU49JpKiOy_IB4U0KdBuU-7k58WCi0JP?usp=share_link))here</a> to reproduce results in this paper.
+* Trained real-time identity defenses models are available ([https://drive.google.com/file/d/1qP1kcjz6fSzevWSEWFucJS7gDWk88-35/view?usp=sharing](https://drive.google.com/drive/folders/1EU49JpKiOy_IB4U0KdBuU-7k58WCi0JP?usp=share_link))here</a> to reproduce results in this paper.
+
+## RID inference to protect your images !
+To carry out the defense on your own image, to run the following commands and changes the model path and images-folder path.
+```sh
+python infer.py -m 'model_path' -f 'folder_path' 
+```
