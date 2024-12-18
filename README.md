@@ -15,3 +15,10 @@ To carry out the defense on your own image, to run the following commands and ch
 ```sh
 python infer.py -m 'model_path' -f 'folder_path' 
 ```
+
+## Personalization methods 
+Based on the codebase of diffusers
+```sh
+cd tuning-based-personalization
+accelerate launch --main_process_port $(expr $RANDOM % 10000 + 10000) train_sd_lora_dreambooth_token.py  --config=config/sd_lora.py  
+```
