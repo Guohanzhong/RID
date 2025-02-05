@@ -31,7 +31,7 @@ Before setting up the package, users should have Python version 3.8 or higher in
 pip install -r requirements.txt
 ```
 
-# Installation Guide:
+# Installation Guide
 
 ### Install from Github
 ```
@@ -44,8 +44,9 @@ conda activate RID
 pip install -r requirements.txt
 ```
 
+# Demo
 
-# RID inference to protect your images !
+## RID inference to protect your images !
 To carry out the defense on your own image, to run the following commands and changes the model path and images-folder path.
 ```sh
 python infer.py -m 'model_path' -f 'folder_path' 
