@@ -60,7 +60,13 @@ accelerate launch --main_process_port $(expr $RANDOM % 10000 + 10000) train_sd_l
 # Training scripts
 
 # Pseudocode
-
+```plaintext
+Algorithm 快速排序(A, low, high):
+    if low < high:
+        pivot_index = partition(A, low, high)
+        快速排序(A, low, pivot_index - 1)
+        快速排序(A, pivot_index + 1, high)
+```
 # :hearts: Acknowledgement
 
 This project is heavily based on the [Diffusers](https://github.com/huggingface/diffusers) library, [DiT](https://github.com/facebookresearch/DiT) libary, [Anti-Dreambooth](https://github.com/VinAIResearch/Anti-DreamBooth) library.
