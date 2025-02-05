@@ -31,6 +31,19 @@ Before setting up the package, users should have Python version 3.9 or higher in
 pip install -r requirements.txt
 ```
 
+# Installation Guide:
+
+### Install from Github
+```
+git clone https://github.com/Guohanzhong/RID
+cd RID
+
+# create an environment with python >= 3.8
+conda create -n RID python=3.8
+conda activate RID
+pip install -r requirements.txt
+```
+
 
 # RID inference to protect your images !
 To carry out the defense on your own image, to run the following commands and changes the model path and images-folder path.
