@@ -26,10 +26,11 @@ The development version of the package has been tested on *Linux* operating syst
 - **Mac OSX**: Supported
 - **Windows**: Supported
 
-Before setting up the package, users should have Python version 3.8 or higher installed, along with the necessary dependencies specified in the `requirements.txt` file.
+Before setting up the package, users should have Python version 3.8 or higher installed, along with the necessary dependencies specified in the `requirements.txt` file. No need for any non-standard hardware.
 ```sh
 pip install -r requirements.txt
 ```
+
 
 # Installation Guide
 
