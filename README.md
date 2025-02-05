@@ -60,13 +60,25 @@ accelerate launch --main_process_port $(expr $RANDOM % 10000 + 10000) train_sd_l
 # Training scripts
 
 # Pseudocode
-```plaintext
-Algorithm 快速排序(A, low, high):
-    if low < high:
-        pivot_index = partition(A, low, high)
-        快速排序(A, low, pivot_index - 1)
-        快速排序(A, pivot_index + 1, high)
-```
+```pseudocode
+Algorithm: Image Protection with RID
+Input: 
+    - images: Batch of normalized images ∈ [-1, 1] (shape [B, C, H, W])
+    - RID_net: Pretrained perturbation generator
+Output: 
+    - protected_images: Protected images ∈ [-1, 1]
+
+Process:
+1. Generate perturbations:
+    Δ = RID_net(images)  ▹ Matching shape [B, C, H, W]
+    
+2. Apply perturbations:
+    protected = images + Δ
+    
+3. Clip to valid range:
+    protected = clamp(protected, min=-1.0, max=1.0)
+    
+return protected
 # :hearts: Acknowledgement
 
 This project is heavily based on the [Diffusers](https://github.com/huggingface/diffusers) library, [DiT](https://github.com/facebookresearch/DiT) libary, [Anti-Dreambooth](https://github.com/VinAIResearch/Anti-DreamBooth) library.
