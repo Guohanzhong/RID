@@ -70,15 +70,16 @@ Output:
 
 Process:
 1. Generate perturbations:
-    Δ = RID_net(images)  ▹ Matching shape [B, C, H, W]
+    Δ = RID(images)  ▹ Matching shape [B, C, H, W]
     
 2. Apply perturbations:
     protected = images + Δ
     
 3. Clip to valid range:
     protected = clamp(protected, min=-1.0, max=1.0)
-    
+
 return protected
+```
 # :hearts: Acknowledgement
 
 This project is heavily based on the [Diffusers](https://github.com/huggingface/diffusers) library, [DiT](https://github.com/facebookresearch/DiT) libary, [Anti-Dreambooth](https://github.com/VinAIResearch/Anti-DreamBooth) library.
