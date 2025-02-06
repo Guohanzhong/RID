@@ -97,7 +97,15 @@ For instance,
     {"image_file": "2.png"},
 ]
 ```
-
+The 'pair_path' should also be a JSON array where each element is a JSON object. Each object must contain two keys: "source_path" and "attacked_path". The value corresponding to "source_path" is the file path of the source image, and the value corresponding to "attacked_path" is the file path of the attacked image which is generated using the Anti-DB. 
+For instancce, 
+```
+[
+    {"source_path": "source_1.png", "attacked_path": "attacked_1.png"},
+    {"source_path": "source_2.png", "attacked_path": "attacked_2.png"},
+]
+```
+The order and number of elements do not need to be the same for both jsons.
 
 # Pseudocode
 ```pseudocode
