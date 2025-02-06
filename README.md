@@ -11,7 +11,7 @@
 * Trained real-time identity defenses models are available ([https://drive.google.com/file/d/1qP1kcjz6fSzevWSEWFucJS7gDWk88-35/view?usp=sharing](https://drive.google.com/drive/folders/1EU49JpKiOy_IB4U0KdBuU-7k58WCi0JP?usp=share_link))here</a> to reproduce results in this paper.
 
 ## 🔎 Overview framework
-![seesr](asset/fig8_v10.pdf)
+![seesr](asset/framework.png)
 
 
 # System Requirements
