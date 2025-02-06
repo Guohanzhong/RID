@@ -42,7 +42,7 @@ conda activate RID
 pip install -r requirements.txt
 ```
 
-# Demo
+# Inference Demo
 
 ## RID inference to protect your images !
 To carry out the defense on your own image, to run the following commands and changes the model path and images-folder path.
@@ -104,7 +104,7 @@ accelerate launch train_sd_ensemble_dmd.py \
 
 where 'pretrained_model_name_or_path' denotes the pre-trained diffusion models we use in training, to use the ensemble models to train, set 'pretrained_model_name_or_path' as 'model_1,model_2,model_3'.
 
-'data_json_file' denotes the a JSON file that stores a list of dictionaries. Each dictionary in this list must have at least one key "image_file", which represents the file path of an image.
+'data_json_file' denotes the a JSON file that stores a list of dictionaries. Each dictionary in this list must have at least one key "image_file", which represents the file path of an image. In our paper, we use the VGGFace2 as the raw dataset.
 For instance, 
 ```
 [
@@ -128,6 +128,7 @@ We also provide the ability to optimize the RID using only regression, using the
 ```sh
 sh train_sd_ensemble_reg.sh
 ```
+Training RID costs about 7 days with 8 A100-40G.
 
 # Pseudocode
 ```pseudocode
