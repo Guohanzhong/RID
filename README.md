@@ -75,6 +75,30 @@ In order to train RID, we need to first prepare the training dataset, which cons
 
 ## Training the RID
 
+After preparing the dataset, run the following commands to train the RID,
+```sh
+sh train_sd_ensemble_dmd.sh
+```
+or
+```
+accelerate launch train_sd_ensemble_dmd.py \
+    --vad_output_dir "./train_cache/image/sd-vgg-ensemble_dmddit_12-255_sds" \
+    --output_dir "./train_cache/pth2/sd-vgg-ensemble_dmddit_12-255_sds" \
+    --data_json_file "eps-12_255-mom_anti-a9f0/VGGFace-all.json" \
+    --pair_path "eps-12_255-mom_anti-a9f0/output_pairs.json" \
+    --tensorboard_output_dir "logs/sd-vgg-ensemble_dmddit_12-255_10l1_all" \
+    --resolution 512 > ./logs/sd-vgg-dmd_sds-12-255_sds.log 2>&1 &
+```
+where 'data_json_file' denotes the a JSON file that stores a list of dictionaries. Each dictionary in this list must have at least one key "image_file", which represents the file path of an image.
+For instance, 
+```
+[
+    {"image_file": "1.png"},
+    {"image_file": "2.png"},
+]
+```
+
+
 # Pseudocode
 ```pseudocode
 Algorithm: Image Protection with RID
