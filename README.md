@@ -132,7 +132,7 @@ Training RID costs about 7 days with 8 A100-40G.
 
 # Pseudocode
 ```pseudocode
-Algorithm: Image Protection with RID
+Inference Algorithm: Image Protection with RID
 Input: 
     - images: Batch of normalized images ∈ [-1, 1] (shape [B, C, H, W])
     - RID_net: Pretrained perturbation generator
@@ -141,6 +141,7 @@ Output:
 
 Process:
 1. Generate perturbations:
+    # Real-time protection
     Δ = RID(images)  ▹ Matching shape [B, C, H, W]
     
 2. Apply perturbations:
