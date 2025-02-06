@@ -73,6 +73,17 @@ accelerate launch --main_process_port $(expr $RANDOM % 10000 + 10000) train_sd_d
 
 In order to train RID, we need to first prepare the training dataset, which consists of the original dataset as well as protected image-image data pairs constructed using a gradient-based approach.
 
+The pairs data is important for training the RID. To generate the pairs data, we use the [Anti-Dreambooth](https://github.com/VinAIResearch/Anti-DreamBooth) library to generate the corresponding perturbation for each image and store these pairs for the following training.
+
+```sh
+cd gradient-based-attack
+accelerate launch --num_processes 1 aspl_ensemble.py --pretrained_model_name_or_path "" --instance_data_dir_for_train "" --instance_data_dir_for_adversarial ""  --pgd_eps "" --output_dir ""
+```
+where 'pretrained_model_name_or_path' denotes the pre-trained models use for generation pairs data, it should be aligned with the process of training the RID in the following.
+'instance_data_dir_for_train' and 'instance_data_dir_for_adversarial' denote the same clean images folder, while the images are directly stored in this folder.
+'output_dir' denotes the output dir for protected images.
+'pgd_eps' denotes the perturbation scale, with higher scale, the protection is more visible. We recommand to set the perturbation scale as 12/255.
+
 ## Training the RID
 
 After preparing the dataset, run the following commands to train the RID,
@@ -101,7 +112,7 @@ For instance,
     {"image_file": "2.png"},
 ]
 ```
-The 'pair_path' should also be a JSON array where each element is a JSON object. Each object must contain two keys: "source_path" and "attacked_path". The value corresponding to "source_path" is the file path of the source image, and the value corresponding to "attacked_path" is the file path of the attacked image which is generated using the Anti-DB. 
+The 'pair_path' should also be a JSON array where each element is a JSON object. Each object must contain two keys: "source_path" and "attacked_path". The value corresponding to "source_path" is the file path of the source image, and the value corresponding to "attacked_path" is the file path of the protected image which is generated using the Anti-DB. 
 For instancce, 
 ```
 [
