@@ -50,7 +50,7 @@ To carry out the defense on your own image, to run the following commands and ch
 python infer.py -m 'model_path' -f 'folder_path' 
 ```
 This will process a whole folder in 'folder_path' and save all the protected images in the '/output_folder/', the processing speed is 8 images per second when using A100.
-'model_path' is the checkpoint of RID network, which can download from Google drive(https://drive.google.com/drive/folders/1EU49JpKiOy_IB4U0KdBuU-7k58WCi0JP?usp=share_link).
+'model_path' is the checkpoint of RID network, which can download from ([Google Drive](https://drive.google.com/drive/folders/1EU49JpKiOy_IB4U0KdBuU-7k58WCi0JP?usp=share_link)).
 
 ## Personalization methods 
 Based on the codebase of diffusers
