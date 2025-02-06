@@ -59,9 +59,9 @@ In order to evaluation the protection performance, based on [Diffusers](https://
 cd tuning-based-personalization
 accelerate launch --main_process_port $(expr $RANDOM % 10000 + 10000) train_sd_lora_dreambooth_token.py  --config=config/sd_lora.py  
 ```
-'config/sd_lora.py' contains the parameters needed for personalization training. ‘train_sd_lora_dreambooth_token.py' is used for training the 'LoRA+TI', costs about 10 minutes to train. While set 'config.use_lora = False' in 'config/sd_lora.py', the personalization method becomes 'TI'. 
+'config/sd_lora.py' contains the parameters needed for personalization training. ‘train_sd_lora_dreambooth_token.py' is used for training the 'LoRA+TI', costs about 10 minutes to train. While set 'config.use_lora = False' in 'config/sd_lora.py', the personalization method becomes 'TI', which costs 5 minutes to train.
 
-The following command is use the 'DB' as the personalization method.
+The following command is use the 'DB' as the personalization method, which costs 30 minutes to train.
 ```sh
 cd tuning-based-personalization
 accelerate launch --main_process_port $(expr $RANDOM % 10000 + 10000) train_sd_dreambooth_token.py  --config=config/sd.py  
