@@ -170,7 +170,7 @@ return protected
 └── gradient-based-attack/         ## the code for generation pairs data using gradient-based protection methods
     └── aspl_ensemble.py           ## gradient-based protection code
     └── ...
-└── evaluation/                    ## Quantitative assessment code
+└── evaluation/                    ## Quantitative evaluation code
 ```
 
 # :hearts: Acknowledgement
