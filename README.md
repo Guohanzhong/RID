@@ -49,6 +49,7 @@ To carry out the defense on your own image, to run the following commands and ch
 ```sh
 python infer.py -m 'model_path' -f 'folder_path' 
 ```
+This will process a whole folder in 'folder_path' and save all the protected images in the '/output_folder/', the processing speed is 8 images per second when using A100.
 
 ## Personalization methods 
 Based on the codebase of diffusers
