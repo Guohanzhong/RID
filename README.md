@@ -52,14 +52,22 @@ python infer.py -m 'model_path' -f 'folder_path'
 This will process a whole folder in 'folder_path' and save all the protected images in the '/output_folder/', the processing speed is 8 images per second when using A100.
 'model_path' is the checkpoint of RID network, which can download from ([Google Drive](https://drive.google.com/drive/folders/1EU49JpKiOy_IB4U0KdBuU-7k58WCi0JP?usp=share_link)).
 
-## Personalization methods 
-Based on the codebase of diffusers
+## Evaluation the performance of protection
+### Personalization methods 
+In order to evaluation the protection performance, based on [Diffusers](https://github.com/huggingface/diffusers), run the personalization using the following commands
 ```sh
 cd tuning-based-personalization
 accelerate launch --main_process_port $(expr $RANDOM % 10000 + 10000) train_sd_lora_dreambooth_token.py  --config=config/sd_lora.py  
 ```
+'config/sd_lora.py' contains the parameters 
 
 # Training scripts
+
+## Prepare the dataset
+
+In order to train RID, we need to first prepare the training dataset, which consists of the original dataset as well as protected image-image data pairs constructed using a gradient-based approach.
+
+## Training the RID
 
 # Pseudocode
 ```pseudocode
