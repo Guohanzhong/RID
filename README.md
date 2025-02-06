@@ -59,7 +59,7 @@ In order to evaluation the protection performance, based on [Diffusers](https://
 cd tuning-based-personalization
 accelerate launch --main_process_port $(expr $RANDOM % 10000 + 10000) train_sd_lora_dreambooth_token.py  --config=config/sd_lora.py  
 ```
-'config/sd_lora.py' contains the parameters 
+'config/sd_lora.py' contains the parameters needed for personalization training.
 
 # Training scripts
 
