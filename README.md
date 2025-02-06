@@ -82,6 +82,7 @@ sh train_sd_ensemble_dmd.sh
 or
 ```
 accelerate launch train_sd_ensemble_dmd.py \
+    --pretrained_model_name_or_path ""
     --vad_output_dir "./train_cache/image/sd-vgg-ensemble_dmddit_12-255_sds" \
     --output_dir "./train_cache/pth2/sd-vgg-ensemble_dmddit_12-255_sds" \
     --data_json_file "eps-12_255-mom_anti-a9f0/VGGFace-all.json" \
@@ -89,7 +90,9 @@ accelerate launch train_sd_ensemble_dmd.py \
     --tensorboard_output_dir "logs/sd-vgg-ensemble_dmddit_12-255_10l1_all" \
     --resolution 512 > ./logs/sd-vgg-dmd_sds-12-255_sds.log 2>&1 &
 ```
-where 'data_json_file' denotes the a JSON file that stores a list of dictionaries. Each dictionary in this list must have at least one key "image_file", which represents the file path of an image.
+
+where 'pretrained_model_name_or_path' denotes the pre-trained diffusion models we use in training, to use the ensemble models to train, set 'pretrained_model_name_or_path' as 'model_1,model_2,model_3'.
+.'data_json_file' denotes the a JSON file that stores a list of dictionaries. Each dictionary in this list must have at least one key "image_file", which represents the file path of an image.
 For instance, 
 ```
 [
@@ -106,6 +109,13 @@ For instancce,
 ]
 ```
 The order and number of elements do not need to be the same for both jsons.
+
+'output_dir' denotes the the output dir for the trained RID network. 'vad_output_dir' represents the output of RID during training.
+
+We also provide the ability to optimize the RID using only regression, using the following command,
+```sh
+sh train_sd_ensemble_reg.sh
+```
 
 # Pseudocode
 ```pseudocode
