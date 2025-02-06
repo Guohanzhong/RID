@@ -131,6 +131,7 @@ sh train_sd_ensemble_reg.sh
 Training RID costs about 7 days with 8 A100-40G.
 
 # Pseudocode
+### Pseudocode of Inference
 ```pseudocode
 Inference Algorithm: Image Protection with RID
 Input: 
@@ -152,6 +153,26 @@ Process:
 
 return protected
 ```
+### Pseudocode of our RID library
+```
+└── infer.py                      ## inference code using trained RID
+└── train_sd_ensemble_dmd.sh      ## training scripts using Adv-SDS
+└── train_sd_ensemble_dmd.py      ## training code using Adv-SDS
+└── train_sd_ensemble_reg.sh      ## training scripts using only regression
+└── train_sd_ensemble_reg.py      ## training code using only regression
+└── tuning-based-personalization/ ## the peronsonalization code
+    └── train_sd_dreambooth_token.py        ## train DB
+    └── train_sd_lora_dreambooth_token.py    ## train Lora+TI/TI
+    └── config   ## config using in training personalization
+        └── sd_lora.py    # config for Lora+TI/TI
+        └── sd.py         # config for DB
+    └── ...
+└── gradient-based-attack/         ## the code for generation pairs data using gradient-based protection methods
+    └── aspl_ensemble.py           ## gradient-based protection code
+    └── ...
+└── evaluation/                    ## Quantitative assessment code
+```
+
 # :hearts: Acknowledgement
 
 This project is heavily based on the [Diffusers](https://github.com/huggingface/diffusers) library, [DiT](https://github.com/facebookresearch/DiT) libary, [Anti-Dreambooth](https://github.com/VinAIResearch/Anti-DreamBooth) library.
