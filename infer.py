@@ -75,6 +75,56 @@ def load_model(torch_device='cuda', lora_path=None, lora_rank=32):
     unet.to(torch_device)
     return vae, tokenizer, text_encoder, unet, scheduler, pipe
 
+@torch.no_grad()
+def get_text_embed(prompt: list, tokenizer, text_encoder, torch_device='cuda'):
+    text_input = tokenizer(
+        prompt, padding="max_length", max_length=tokenizer.model_max_length, truncation=True, return_tensors="pt"
+    )
+    text_embeddings = text_encoder(text_input.input_ids.to(torch_device))[0]
+    return text_embeddings
+
+
+@torch.no_grad()
+def get_img_latent(img_path, vae, torch_device='cuda', dtype=torch.float32, height=None, weight=None):
+    data = Image.open(img_path).convert('RGB')
+    if height is not None:
+        data = data.resize((weight, height))
+    transform = transforms.ToTensor()
+    data = transform(data).unsqueeze(0)
+    data = (data * 2.) - 1.
+    data = data.to(torch_device)
+    data = data.to(dtype)
+    latents = vae.encode(data).latent_dist.sample()
+    latents = 0.18215 * latents
+    return latents
+
+
+def set_seed(seed):
+    torch.manual_seed(seed)
+    random.seed(seed)
+    np.random.seed(seed)
+
+    torch.backends.cudnn.deterministic = True
+    torch.backends.cudnn.benchmark = False
+
+from torchvision.utils import  save_image
+from libs.uvit import UViT
+
+def open_image_safely(image_path):
+    from PIL import PngImagePlugin
+    LARGE_ENOUGH_NUMBER = 100
+    PngImagePlugin.MAX_TEXT_CHUNK = LARGE_ENOUGH_NUMBER * (1024**2)
+    from PIL import Image    
+    img = Image.open(image_path).convert("RGBA")
+    background = Image.new("RGBA", img.size, "white")
+    background.paste(img, (0, 0), img)  # Image.paste(im, box, mask)
+    if not background.mode == "RGB":
+        background = background.convert("RGB")
+    img = background
+    return img
+from libs.DiT import DiT
+
+
 # Main function
 if __name__ == '__main__':
     # Parse arguments
