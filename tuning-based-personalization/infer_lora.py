@@ -83,13 +83,19 @@ def load_model(torch_device='cuda',lora_path=None):
                 hidden_size=hidden_size, cross_attention_dim=cross_attention_dim, rank=32
             )
 
-        unet.set_attn_processor(unet_lora_attn_procs)
-        unet_lora_layers = AttnProcsLayers(unet.attn_processors)
-        print(token_savepath)
-        pipe.load_textual_inversion(token_savepath)
+        #unet.set_attn_processor(unet_lora_attn_procs)
+        #unet_lora_layers = AttnProcsLayers(unet.attn_processors)
+        #print(token_savepath)
+        #pipe.load_textual_inversion(token_savepath)
 
-        unet.load_attn_procs(save_path)
-
+        #unet.load_attn_procs(save_path)
+        pipe.load_lora_weights(save_path) 
+        try:
+            pipe.load_textual_inversion(token_savepath)
+            print("*****")
+        except:
+            pass
+    
     vae.to(torch.float32)
     vae.to(torch_device)
     text_encoder.to(torch_device)
