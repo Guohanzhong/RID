@@ -18,7 +18,7 @@
 
 ## Hardware Requirements
 
-The `RID` library requires a GPU with at least 10 GB of VRAM for inference. If using CPU, one core is sufficient, and the RAM requirement is 16+ GB. For training, a GPU with 40 GB of VRAM or higher is necessary, along with at least 4 CPU cores (3.3 GHz or higher), and 16 GB of RAM. 
+The `RID` library requires a GPU with at least 3 GB of VRAM for inference with fp32 and at least 2GB of VRAM for inference with fp16 with single batch. If using CPU, one core is sufficient, and the RAM requirement is 3GB. For training, a GPU with 40 GB of VRAM or higher is necessary, along with at least 4 CPU cores (3.3 GHz or higher), and 16 GB of RAM. 
 
 ## Software Requirements
 
