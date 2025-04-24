@@ -49,7 +49,7 @@ def get_config():
         train_text_encoder=False,
         train_batch_size  = 1,
         sample_batch_size = 1,
-        max_train_steps = 250,
+        max_train_steps = 221,
         num_train_epochs= None,
         save_steps = 10,
         gradient_accumulation_steps = 1,
