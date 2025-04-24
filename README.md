@@ -75,6 +75,22 @@ accelerate launch --main_process_port $(expr $RANDOM % 10000 + 10000) train_sd_d
 
 ### Results after post-processing on defened images.
 
+In the real-world scenarios, adversaries may apply various post-processing techniques to protected images to weaken the defense before launching personalized image generation, which we already considered in the page 12 in the Main text, to better reproduce the results of Figure~6 in the Main text, we provide code repositories for different post-processing methods. For any post-processing approach, simply apply their processing to the defended images obtained from RID inference to generate post-processed defended images.
+
+(1) JPEG compression (JPEG-C), a traditional approach that compresses high-frequency image information, potentially diminishing the effectiveness of added perturbations; 
+```sh
+from PIL import Image
+img = Image.open(image_path)
+img.save(output_path, "JPEG", quality=75)  
+```
+
+(2) [DiffPure](https://github.com/NVlabs/DiffPure), a diffusion-based method that applies noise and then denoises defended images, leveraging the generative capacity of diffusion models to restore clean features. 
+
+(3) [GridPure](https://github.com/ZhengyueZhao/GrIDPure), which processes 256×256 image patches independently using a pre-trained diffusion model~\cite{dhariwal2021diffusion} to locally denoise defended images like Diffpure;
+
+(4) [Noiseup](https://github.com/ethz-spylab/robust-style-mimicry), a more aggressive purification strategy involving upsampling via a large-scale super-resolution model (from Stable Diffusion) followed by downsampling.
+
+Many thanks for their work.
 
 # Training scripts
 
@@ -188,7 +204,7 @@ return protected
 Given the limitations of quantitative metrics and the subjective nature of the task in our paper, we conducted a carefully designed user study to assess both the protection effectiveness [(User study 1)](https://t5liqmupvt.feishu.cn/docx/ZyoXdI8H8om7ZDxYzmec29Asndd?from=from_copylink) and visual imperceptibility [(User study 2)](https://t5liqmupvt.feishu.cn/docx/LzEOdFeKHo4Jddx7HGackj01n5e?from=from_copylink) of RID in comparison with baseline approaches. 
 The results of these two user studies are shown in the Figure~2e and Figure~2f in the Main text.
 
-Further, due to the misleading quantitative results of the [Noiseup](https://github.com/ethz-spylab/robust-style-mimicry), we carried out another user study about the protection effectiveness between the undefended images and defended images with the Noiseup. [(User study 3)]([https://t5liqmupvt.feishu.cn/docx/ZyoXdI8H8om7ZDxYzmec29Asndd?from=from_copylink](https://t5liqmupvt.feishu.cn/docx/OiyldJwiZod4aBxCzpic82jGnhf?from=from_copylink)), whose results are shown in Figure~S.2 in Supplementary
+Further, due to the misleading quantitative results of the [Noiseup](https://github.com/ethz-spylab/robust-style-mimicry), we carried out another user study about the protection effectiveness between the undefended images and defended images with the Noiseup. [(User study 3)]([https://t5liqmupvt.feishu.cn/docx/ZyoXdI8H8om7ZDxYzmec29Asndd?from=from_copylink](https://t5liqmupvt.feishu.cn/docx/OiyldJwiZod4aBxCzpic82jGnhf?from=from_copylink), whose results are shown in Figure~S.2 in Supplementary
 Note C in Supplementary Information.
 
 # :hearts: Acknowledgement
