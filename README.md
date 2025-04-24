@@ -71,6 +71,11 @@ cd tuning-based-personalization
 accelerate launch --main_process_port $(expr $RANDOM % 10000 + 10000) train_sd_dreambooth_token.py  --config=config/sd.py  
 ```
 
+### More results about the robustness
+
+### Results after post-processing on defened images.
+
+
 # Training scripts
 
 ## Prepare the dataset
@@ -176,6 +181,15 @@ return protected
     └── ...
 └── evaluation/                    ## Quantitative evaluation code
 ```
+
+
+# User study
+
+Given the limitations of quantitative metrics and the subjective nature of the task in our paper, we conducted a carefully designed user study to assess both the protection effectiveness [(User study 1)](https://t5liqmupvt.feishu.cn/docx/ZyoXdI8H8om7ZDxYzmec29Asndd?from=from_copylink) and visual imperceptibility [(User study 2)](https://t5liqmupvt.feishu.cn/docx/LzEOdFeKHo4Jddx7HGackj01n5e?from=from_copylink) of RID in comparison with baseline approaches. 
+The results of these two user studies are shown in the Figure~2e and Figure~2f in the Main text.
+
+Further, due to the misleading quantitative results of the [Noiseup](https://github.com/ethz-spylab/robust-style-mimicry), we carried out another user study about the protection effectiveness between the undefended images and defended images with the Noiseup. [(User study 3)]([https://t5liqmupvt.feishu.cn/docx/ZyoXdI8H8om7ZDxYzmec29Asndd?from=from_copylink](https://t5liqmupvt.feishu.cn/docx/OiyldJwiZod4aBxCzpic82jGnhf?from=from_copylink)), whose results are shown in Figure~S.2 in Supplementary
+Note C in Supplementary Information.
 
 # :hearts: Acknowledgement
 
