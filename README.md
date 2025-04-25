@@ -73,6 +73,12 @@ accelerate launch --main_process_port $(expr $RANDOM % 10000 + 10000) train_sd_d
 
 ### More results about the robustness
 
+In the Extended Data Figure~3, Extended Data Figure~4, Extended Data Figure~5, Extended Data Figure~6 in the Main text, we provide robustness of RID across a wide range of conditions (including a larger number of identities, diverse gender, and racial groups) and mixed clean/protected training data settings. 
+To better help to reproduce the results in the paper, we provide the data of different IDs used in evaluation.
+
+Due to some potential privacy issues, we only put up mixed results for the evaluation set used by [115 IDs](https://drive.google.com/file/d/14rsm9tZdkXhuMPqTyYaQm2LztL7AkTKQ/view?usp=share_link) and the mixed clean/protected training data settings.
+
+
 ### Results after post-processing on defened images.
 
 In the real-world scenarios, adversaries may apply various post-processing techniques to protected images to weaken the defense before launching personalized image generation, which we already considered in the page 12 in the Main text, to better reproduce the results of Figure~6 in the Main text, we provide code repositories for different post-processing methods. For any post-processing approach, simply apply their processing to the defended images obtained from RID inference to generate post-processed defended images.
