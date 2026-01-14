@@ -62,6 +62,8 @@ This will process a whole folder in 'folder_path' and save all the protected ima
 
 While the inference of optional perturbation purification in the same while changing the model path and input folder. It is required to run the protection using the RID and using the output folder as the input folder in the second stage.
 
+Meanwhile, to implement the RID and personalization on certrain ID, we provide a folder of one person in './asset/15_supp' extracted from the evaluation dataset.
+
 ## Evaluation the performance of protection
 ### Personalization methods 
 In order to evaluation the protection performance, based on [Diffusers](https://github.com/huggingface/diffusers), run the personalization using the following commands
