@@ -171,7 +171,7 @@ def parse_args(input_args=None):
     parser.add_argument(
         "--pretrained_model_name_or_path",
         type=str,
-        default="stable-diffusion-2-1-base,stable-diffusion-v1-5,
+        default="stable-diffusion-2-1-base,stable-diffusion-v1-5",
         help="Path to pretrained model or model identifier from huggingface.co/models.",
     )
     parser.add_argument(

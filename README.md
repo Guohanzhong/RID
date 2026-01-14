@@ -53,8 +53,14 @@ To carry out the defense on your own image, to run the following commands and ch
 ```sh
 python infer.py -m 'model_path' -f 'folder_path' 
 ```
+or
+```sh
+bash infer_test.sh
+```
 This will process a whole folder in 'folder_path' and save all the protected images in the '/output_folder/', the processing speed is 8 images per second when using A100.
 'model_path' is the checkpoint of RID network, which can download from ([Google Drive](https://drive.google.com/drive/folders/1EU49JpKiOy_IB4U0KdBuU-7k58WCi0JP?usp=share_link)).
+
+While the inference of optional perturbation purification in the same while changing the model path and input folder. It is required to run the protection using the RID and using the output folder as the input folder in the second stage.
 
 ## Evaluation the performance of protection
 ### Personalization methods 
@@ -79,7 +85,7 @@ To better help to reproduce the results in the paper, we provide the data of dif
 Due to some potential privacy issues, we only put up mixed results for the evaluation set used by [115 IDs](https://drive.google.com/file/d/14rsm9tZdkXhuMPqTyYaQm2LztL7AkTKQ/view?usp=share_link) and the mixed clean/protected training data settings.
 
 
-### Results after post-processing on defened images.
+### Results after post-processing on defended images.
 
 In the real-world scenarios, adversaries may apply various post-processing techniques to protected images to weaken the defense before launching personalized image generation, which we already considered in the page 12 in the Main text, to better reproduce the results of Figure~6 in the Main text, we provide code repositories for different post-processing methods. For any post-processing approach, simply apply their processing to the defended images obtained from RID inference to generate post-processed defended images.
 
@@ -89,12 +95,59 @@ from PIL import Image
 img = Image.open(image_path)
 img.save(output_path, "JPEG", quality=75)  
 ```
+Or run the follwing commands where '-i' denotes the input folder after protection.
+```sh
+python post_j.py -i -o -q 75
+```
 
 (2) [DiffPure](https://github.com/NVlabs/DiffPure), a diffusion-based method that applies noise and then denoises defended images, leveraging the generative capacity of diffusion models to restore clean features. 
+We implement the Diffpure based on the diffusers, running in
+```sh
+python post_diffpure.py \
+    -m "path/to/your/stable-diffusion-model" \
+    -i "path/to/defended_images_base_folder" \
+    -o "path/to/output_purified_images_folder" \
+    -p "01,02,03" \
+    -s 0.1
+```
+where '-m' denotes '--model_path', the path to the Stable Diffusion model (required). '-i' denotes '--input_dir', the root directory containing subfolders of protected images (required). '-o' denotes '--output_dir', the root directory to save the processed images (required). '-p' denotes '--process_list', the omma-separated list of subfolder names to process. If omitted, all subfolders will be processed. '-s' denotes '--strength', denoising strength, controlling how much the image is altered (default: 0.1).
+
 
 (3) [GridPure](https://github.com/ZhengyueZhao/GrIDPure), which processes 256×256 image patches independently using a pre-trained diffusion model~\cite{dhariwal2021diffusion} to locally denoise defended images like Diffpure;
 
+In order to implement the GridPure, it is required to run
+```sh
+git clone https://github.com/ZhengyueZhao/GrIDPure.git
+cd GrIDPure
+python gridpure.py \
+    --input_dir="" \
+    --output_dir="" \
+    --pure_model_dir="" \
+    --pure_steps=10 \
+    --pure_iter_num=20 \
+    --gamma=0.1
+```
+which 'input_dir' denotes the defended image folder, and 'output_dir' is the output path for postprocessing under the GridPure. 'pure_model_dir' denotes the model path for '256x256_diffusion_uncond.pt'.
+While the checkpoint can be downloaded via 
+```sh
+wget https://openaipublic.blob.core.windows.net/diffusion/jul-2021/256x256_diffusion_uncond.pt
+```
+It is worth noting that there are some typos in [GridPure](https://github.com/ZhengyueZhao/GrIDPure), to run sucessfully, you should change the line-138 in 'gridpure.py' to
+```sh
+diffpure_model_dir = args.pure_model_dir
+```
+
 (4) [Noiseup](https://github.com/ethz-spylab/robust-style-mimicry), a more aggressive purification strategy involving upsampling via a large-scale super-resolution model (from Stable Diffusion) followed by downsampling.
+
+In order to implement the Noiseup, it is required to run
+```sh
+git clone https://github.com/ethz-spylab/robust-style-mimicry.git
+cd robust-style-mimicry
+python noise.py --in_dir --out_dir  --gaussian_noise 0.05
+python upscale.py --in_dir --out_dir  
+```
+It worth noting that to run sucessfully, you should replace the 'noise.py' 'upscale.py' with there two files in './robust-style-mimicry'
+
 
 Many thanks for their work.
 
