@@ -59,6 +59,9 @@ bash infer_test.sh
 ```
 This will process a whole folder in 'folder_path' and save all the protected images in the '/output_folder/', the processing speed is 8 images per second when using A100.
 'model_path' is the checkpoint of RID network, which can download from ([Google Drive](https://drive.google.com/drive/folders/1EU49JpKiOy_IB4U0KdBuU-7k58WCi0JP?usp=share_link)).
+'ASDS-eps-6_255.bin'|'ASDS-eps-8_255.bin'|'ASDS-eps-12_255.bin' denotes the RID trained under the perturbation constraint of 6/255|8/255|12/255 with combined loss.
+'ASDS-onlyreg-eps12_255.bin' denotes the RID trained under the perturbation constraint of 6/255|8/255|12/255 with only regression loss.
+'ASDS-onlysds-eps12_255.bin' denotes the RID trained under the perturbation constraint of 6/255|8/255|12/255 with only AdvSDS loss.
 
 While the inference of optional perturbation purification in the same while changing the model path and input folder. It is required to run the protection using the RID and using the output folder as the input folder in the second stage.
 
