@@ -15,3 +15,5 @@ ftfy
 regex
 pytorch_fid
 brisque
+timm
+numpy==1.23.0

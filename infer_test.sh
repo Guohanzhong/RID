@@ -1,6 +1,6 @@
 python infer_batch.py \
-  -m ./checkpoint/ASDS-eps-12_255.bin \
-  -r ./pick \
-  -o ./pick-gam_12 \
-  -n 8 \
+  -m .ASDS-eps-12_255.bin \
+  -r ./asset/ \
+  -o ./output/pick15-gam_12 \
+  -n 1 \
   --eps 12 
